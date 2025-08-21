@@ -1,0 +1,179 @@
+{
+  "routes_list": [
+    {
+      "id": 1,
+      "commute": [
+        {
+          "type": "stage",
+          "name": "Kencom House",
+          "landmark": "Moi Avenue, City Hall Way",
+          "time": "10:00AM"
+        },
+        {
+          "type": "movement",
+          "name": "Walk",
+          "duration": "6 min",
+          "distance": "400m"
+        },
+        {
+          "type": "stage",
+          "name": "Afya Centre Bus Stop",
+          "landmark": "Along Moi Avenue",
+          "time": "10:06AM"
+        },
+        {
+          "type": "movement",
+          "name": "Bus Ride (Route 44)",
+          "duration": "25 min",
+          "distance": "8 km"
+        },
+        {
+          "type": "stage",
+          "name": "Umoja 1 Terminus",
+          "landmark": "Umoja Estate",
+          "time": "10:31AM"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "commute": [
+        {
+          "type": "stage",
+          "name": "CBD Post Office",
+          "landmark": "Kenyatta Avenue",
+          "time": "09:15AM"
+        },
+        {
+          "type": "movement",
+          "name": "Walk",
+          "duration": "4 min",
+          "distance": "300m"
+        },
+        {
+          "type": "stage",
+          "name": "Ambassadeur Bus Stop",
+          "landmark": "Moi Avenue",
+          "time": "09:19AM"
+        },
+        {
+          "type": "movement",
+          "name": "Matatu Ride (Route 11)",
+          "duration": "35 min",
+          "distance": "12 km"
+        },
+        {
+          "type": "stage",
+          "name": "Kasarani Mwiki Stage",
+          "landmark": "Kasarani-Mwiki Road",
+          "time": "09:54AM"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "commute": [
+        {
+          "type": "stage",
+          "name": "National Archives",
+          "landmark": "Moi Avenue",
+          "time": "11:00AM"
+        },
+        {
+          "type": "movement",
+          "name": "Walk",
+          "duration": "7 min",
+          "distance": "500m"
+        },
+        {
+          "type": "stage",
+          "name": "Koja Roundabout",
+          "landmark": "Tom Mboya Street",
+          "time": "11:07AM"
+        },
+        {
+          "type": "movement",
+          "name": "Bus Ride (Route 23)",
+          "duration": "45 min",
+          "distance": "18 km"
+        },
+        {
+          "type": "stage",
+          "name": "Rongai Town",
+          "landmark": "Magadi Road",
+          "time": "11:52AM"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "commute": [
+        {
+          "type": "stage",
+          "name": "Hilton Hotel",
+          "landmark": "Mama Ngina Street",
+          "time": "08:30AM"
+        },
+        {
+          "type": "movement",
+          "name": "Walk",
+          "duration": "5 min",
+          "distance": "350m"
+        },
+        {
+          "type": "stage",
+          "name": "GPO Bus Stop",
+          "landmark": "Kenyatta Avenue",
+          "time": "08:35AM"
+        },
+        {
+          "type": "movement",
+          "name": "Matatu Ride (Route 45)",
+          "duration": "50 min",
+          "distance": "25 km"
+        },
+        {
+          "type": "stage",
+          "name": "Kikuyu Town",
+          "landmark": "Kikuyu-Limuru Road",
+          "time": "09:25AM"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "commute": [
+        {
+          "type": "stage",
+          "name": "Tom Mboya Street",
+          "landmark": "Near Odeon Cinema",
+          "time": "12:00PM"
+        },
+        {
+          "type": "movement",
+          "name": "Walk",
+          "duration": "3 min",
+          "distance": "200m"
+        },
+        {
+          "type": "stage",
+          "name": "Odeon Cinema",
+          "landmark": "Tom Mboya Street",
+          "time": "12:03PM"
+        },
+        {
+          "type": "movement",
+          "name": "Bus Ride (Route 33)",
+          "duration": "20 min",
+          "distance": "7 km"
+        },
+        {
+          "type": "stage",
+          "name": "Thika Road Mall",
+          "landmark": "Thika Superhighway",
+          "time": "12:23PM"
+        }
+      ]
+    }
+  ]
+}
