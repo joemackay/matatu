@@ -1,15 +1,16 @@
 "use client"
 
-import Link from "next/link"
 import searchResults from "@/mock/search_results.json"
-import { ChevronLeft, Link as LinkIcon, BusFront, LandPlot, Goal } from "lucide-react"
+import { ChevronLeft, LandPlot, Goal } from "lucide-react"
 import SearchListItem from "@/app/ui/search/search-list-item"
 import { useRouter } from "next/navigation";
 import { useSearchSelectionStore } from "@/store/search.store"
 import { useEffect, useState } from "react"
+import { SearchItemCardSkeleton } from "@/app/ui/skeletons"
+import { SearchResult } from "@/types/SearchResult";
 
 export default function SearchResultsPage() {
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState<SearchResult[]>([])
   const [loading, setLoading] = useState(true)
   const fromDestination = useSearchSelectionStore((state)=>state.fromDestination)
   const toDestination = useSearchSelectionStore((state)=>state.toDestination)
@@ -20,28 +21,19 @@ export default function SearchResultsPage() {
     // I use this to simulate API call delay
     const timer = setTimeout(() => {
       setResults(searchResults.results) // load mock results
-      setLoading(false) // stop loader
-    }, 3000) // 3 seconds
+      setLoading(false)
+    }, 1000) // 3 seconds
 
     return () => clearTimeout(timer)
   }, [])
-  // const results = searchResults.results
 
   const handleSaccoSelected = (id: number) => {
     console.log('id', id)
     router.push(`/route/${id}`);
   }
-
-  // if(loading) (
-  //   <div>
-  //     {/* Show loader/skeletons */}
-  //     <p className="text-gray-500">Loading results...</p>
-  //   </div>
-  // ) 
+ 
   return (
     <div>
-
-      
       <div className="bg-[#CC703D] p-6">
         <div className="flex justify-between items-center my-6">
           <div className="w-1/2">
@@ -72,18 +64,21 @@ export default function SearchResultsPage() {
         </div>
       </div>
       <div className="p-6">
-        {results.map((result, index) => (
-            // <Link
-            //   key={index}
-            //   href={`/home/routes/${result.id}`}
-            //   className=""
-            // >
-              <SearchListItem
-                key={index}
-                result={result}
-                onSaccoSelected={handleSaccoSelected}
-              />
-            // </Link>
+        {loading ? 
+        <>
+        <div>
+          {[...Array(5)].map((_, i) => (
+            <SearchItemCardSkeleton key={i} />
+          ))}
+        </div>
+        </>
+        :
+        results.map((result, index) => (
+          <SearchListItem
+            key={index}
+            result={result}
+            onSaccoSelected={handleSaccoSelected}
+          />
         ))}
       </div>
     </div>

@@ -1,9 +1,11 @@
 import Link from "next/link";
 import PopularItem from "./popular-item";
 import popular_data from '../../../mock/destinations.json'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils" // helper for conditional classes
 import { useSearchSelectionStore } from "@/store/search.store"
+import { PopularItemCardSkeleton } from "../skeletons";
+import { PopularType } from "@/types/PopularType";
 
 type PopularProps = {
   onSelectDestination: (destination: string) => void
@@ -16,10 +18,21 @@ const popular_links = [
   { name: "Clubs", id: "clubs" },
 ]
 export default function Popular({onSelectDestination}: PopularProps) {
-  const popular = popular_data.popular
-  const[popularData, setPopularData] = useState(popular[0].items)
+  // const popular = popular_data.popular
+  const[popularData, setPopularData] = useState<PopularType[]>([])
+  const [loading, setLoading] = useState(true)
   const[selectedId, setSelectedId] = useState('')
   const { setStoreToDestination } = useSearchSelectionStore()
+
+  useEffect(() => {
+    // I use this to simulate API call delay
+    const timer = setTimeout(() => {
+      setPopularData(popular_data.popular[0].items) // load mock results
+      setLoading(false)
+    }, 1000) // 1 second
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const handlePopularDestinationSelected =(destination: string)=> {
     onSelectDestination(destination)
@@ -62,7 +75,16 @@ export default function Popular({onSelectDestination}: PopularProps) {
         ))}
       </div>
       <div className="flex flex-col">
-        {popularData && popularData.map((place, index) => (
+        {loading ? 
+        <>
+          <div>
+            {[...Array(5)].map((_, i) => (
+              <PopularItemCardSkeleton key={i} />
+            ))}
+          </div>
+        </> 
+        :
+        popularData && popularData.map((place, index) => (
           <PopularItem
             key={index}
             title={place.name}
