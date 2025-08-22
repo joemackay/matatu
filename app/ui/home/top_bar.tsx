@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Settings } from "lucide-react";
 
-export default async function TopBar() {
+export default function TopBar() {
   return (
     <div className="flex justify-between items-center p-6">
       <div className="w-1/6">

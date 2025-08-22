@@ -1,0 +1,184 @@
+{
+  "popular": [
+      {
+        "id": "malls",
+        "items": [
+          {
+            "name": "Sarit Center",
+            "road": "Karuna Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Two Rivers Mall",
+            "road": "Limuru Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Garden City Mall",
+            "road": "Thika Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "The Junction Mall",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Yaya Centre",
+            "road": "Argwings Kodhek Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Village Market",
+            "road": "Limuru Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Thika Road Mall (TRM)",
+            "road": "Thika Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Galleria Mall",
+            "road": "Langata Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Capital Centre",
+            "road": "Mombasa Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "The Hub Karen",
+            "road": "Dagoretti Rd",
+            "town": "Nairobi"
+          }
+        ]
+      },
+      {
+        "id": "hotels",
+        "items":[
+          {
+            "name": "Sarova Hotel",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Kempinski Hotel",
+            "road": "Waiyaki Way",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Villa Rosa Kempinski",
+            "road": "Chiromo Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Radisson Blu Hotel",
+            "road": "Upper Hill Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Fairmont The Norfolk",
+            "road": "Harry Thuku Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Sankara Nairobi",
+            "road": "Woodvale Grove",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Tribe Hotel",
+            "road": "Limuru Rd",
+            "town": "Nairobi"
+          }
+        ]
+      },
+      {
+        "id": "hospitals",
+        "items":[
+          {
+            "name": "Nairobi Hospital",
+            "road": "Thika Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Aga Khan Hospital",
+            "road": "Thika Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Mater Hospital",
+            "road": "Dunga Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Gertrude's Children's Hospital",
+            "road": "Muthaiga Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Karen Hospital",
+            "road": "Karen Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "MP Shah Hospital",
+            "road": "Shivachi Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Coptic Hospital",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          }
+        ]
+      },
+      {
+        "id": "clubs",
+        "items": [
+          {
+            "name": "Nairobi Club",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "The Carnivore",
+            "road": "Thika Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Kettle House",
+            "road": "Gitanga Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "B-Club",
+            "road": "Galana Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Alchemist Bar",
+            "road": "Parklands Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Jiweke Tavern",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Milan",
+            "road": "Argwings Kodhek Rd",
+            "town": "Nairobi"
+          },
+          {
+            "name": "Space Lounge",
+            "road": "Ngong Rd",
+            "town": "Nairobi"
+          }
+        ]
+      }
+  ]
+}

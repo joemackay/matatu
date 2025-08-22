@@ -43,8 +43,8 @@ export default function SearchResultsPage() {
           <div className="w-1/3 px-2 flex justify-center items-center">
             <svg width="100" height="12" viewBox="0 0 100 12" xmlns="http://www.w3.org/2000/svg">
               <line x1="0" y1="6" x2="100" y2="6"
-                    stroke="white" stroke-width="2"
-                    stroke-dasharray="8 6" stroke-linecap="round"/>
+                    stroke="white" strokeWidth="2"
+                    strokeDasharray="8 6" strokeLinecap="round"/>
             </svg>
           </div>
           <div className="w-1/3 flex flex-row justify-between items-center">

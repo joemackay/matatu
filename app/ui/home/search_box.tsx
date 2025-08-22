@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowRightFromLine, CirclePlus } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 const mockSuggestions = [
   "CBD, Nairobi",
   "Westlands",
@@ -13,9 +13,16 @@ const mockSuggestions = [
   "Kilimani",
 ]
 
-export default function SearchBox() {
-  const [from, setFrom] = useState("")
-  const [to, setTo] = useState("")
+type SearchBoxProps = {
+  from: string;
+  destination: string;
+  onSearchFormFocused: (field: string)=>void,
+  onSubmit: () => void
+}
+
+export default function SearchBox({from, destination, onSearchFormFocused, onSubmit}: SearchBoxProps) {
+  const [fromDestination, setFromDestination] = useState("")
+  const [toDestination, setToDestination] = useState("")
   const [activeField, setActiveField] = useState<"from" | "to" | null>(null)
 
   // Filtered suggestions
@@ -24,9 +31,21 @@ export default function SearchBox() {
       s.toLowerCase().includes(input.toLowerCase())
     )
 
+  const handleSetFocus =(field: "from" | "to" | null)=> {
+    if (field) {
+      setActiveField(field)
+      onSearchFormFocused(field)
+    }
+  }
+
+  useEffect(() => {
+    setFromDestination(from)
+    setToDestination(destination)
+  }, [from, destination])
+
   return (
-    <div className="bg-[#FCE8CF] space-y-4 p-6 rounded-2xl shadow">
-      <form className="">
+    <div className="bg-[#EDCEB2] space-y-4 p-6 rounded-2xl shadow">
+      <div className="">
         {/* FROM */}
         <div className="relative flex flex-row h-16 mb-4 rounded-xl bg-white items-center">
           <div className="w-1/6 flex justify-center">
@@ -39,10 +58,10 @@ export default function SearchBox() {
             <input
               type="text"
               placeholder="Enter location"
-              value={from}
-              onChange={(e) => setFrom(e.target.value)}
-              onFocus={() => setActiveField("from")}
-              onBlur={() => setTimeout(() => setActiveField(null), 150)} // delay so clicks register
+              value={fromDestination}
+              onChange={(e) => setFromDestination(e.target.value)}
+              onFocus={() => handleSetFocus("from")}
+              onBlur={() => setTimeout(() => handleSetFocus(null), 150)} // delay so clicks register
               className=" border border-white outline-none  text-black font-semibold"
             />
           </div>
@@ -51,14 +70,14 @@ export default function SearchBox() {
               <CirclePlus height={20} width={20} className="text-[#BF4209]" />
             </div>
           </div>
-          {activeField === "from" && from && (
+          {activeField === "from" && fromDestination && (
             <div className="absolute top-15 z-10 mt-1 w-full  max-h-40 overflow-y-auto">
-              {filteredSuggestions(from).map((s, idx) => (
+              {filteredSuggestions(fromDestination).map((s, idx) => (
                 <div
                   key={idx}
                   onClick={() => {
-                    setFrom(s)
-                    setActiveField(null)
+                    setFromDestination(s)
+                    handleSetFocus(null)
                   }}
                   className="px-3 py-2 mb-4 bg-white rounded-xl shadow hover:bg-gray-100 cursor-pointer text-[#59302C]"
                 >
@@ -81,10 +100,10 @@ export default function SearchBox() {
             <input
               type="text"
               placeholder="Enter your destination"
-              value={to}
-              onChange={(e) => setTo(e.target.value)}
-              onFocus={() => setActiveField("to")}
-              onBlur={() => setTimeout(() => setActiveField(null), 150)}
+              value={toDestination}
+              onChange={(e) => setToDestination(e.target.value)}
+              onFocus={() => handleSetFocus("to")}
+              onBlur={() => setTimeout(() => handleSetFocus(null), 150)}
               className="border border-white outline-none text-black font-semibold"
             />
           </div>
@@ -93,14 +112,14 @@ export default function SearchBox() {
               <CirclePlus height={20} width={20} className="text-[#BF4209]" />
             </div>
           </div>
-          {activeField === "to" && to && (
+          {activeField === "to" && toDestination && (
             <ul className="absolute z-10 mt-1 w-full bg-white border rounded-xl shadow max-h-40 overflow-y-auto">
-              {filteredSuggestions(to).map((s, idx) => (
+              {filteredSuggestions(toDestination).map((s, idx) => (
                 <li
                   key={idx}
                   onClick={() => {
-                    setTo(s)
-                    setActiveField(null)
+                    setToDestination(s)
+                    handleSetFocus(null)
                   }}
                   className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
                 >
@@ -112,12 +131,12 @@ export default function SearchBox() {
         </div>
 
         <button
-          type="submit"
           className="w-full h-14 bg-[#59302C] text-white py-2 rounded-xl hover:bg-[#7f4540] text-lg font-bold"
+          onClick={onSubmit}
         >
           Find My Matatu
         </button>
-      </form>
+      </div>
     </div>
   )
 }

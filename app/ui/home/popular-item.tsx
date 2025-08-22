@@ -1,7 +1,14 @@
 import { ChevronRight, LandPlot } from 'lucide-react';
-export default function PopularItem({title, road, town}: {title: string, road: string, town: string}) {
+
+type PopularItemProps = {
+  title: string;
+  road: string;
+  town: string;
+  onClick: (title: string) => void;
+}
+export default function PopularItem({title, road, town, onClick}: PopularItemProps) {
   return (
-    <div className="flex flex-row justify-between items-center rounded-xl bg-white p-2 mb-3">
+    <div className="flex flex-row justify-between items-center rounded-xl bg-white p-2 mb-3" onClick={()=>onClick(title)}>
       <div className='w-1/6'>
         <div className='flex items-center w-10 h-10 justify-center rounded-full bg-[#EDCEB2]'>
           <LandPlot size={18} className='text-black' />
