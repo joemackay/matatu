@@ -5,7 +5,7 @@ export default function TopBar() {
   // const avatarSrc = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d"
   const avatarSrc = "https://i.pravatar.cc/150?u=a042581f4e29026704d"
   return (
-    <div className="flex justify-between items-center p-6">
+    <div className="flex justify-between items-center p-6 z-50 relative">
       <div className="w-1/6">
         {/* <Image src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" width={20} height={20} /> */}
         

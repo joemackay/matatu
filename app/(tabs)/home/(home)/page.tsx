@@ -41,16 +41,19 @@ export default function Page() {
   }
   return (
     <div>
-      <div className="bg-[#CC703D]">
+      <div className="relative">
+        <div className="bg-[#CC703D] absolute top-0 left-0 right-0 h-84 w-full">
+        </div>
         <TopBar />
         <Welcome />
+      
+        <SearchBox
+          from={fromDestination}
+          destination={toDestination}
+          onSearchFormFocused={handleSearchFormFocussed}
+          onSubmit={handleSubmitSearch}
+        />
       </div>
-      <SearchBox
-        from={fromDestination}
-        destination={toDestination}
-        onSearchFormFocused={handleSearchFormFocussed}
-        onSubmit={handleSubmitSearch}
-      />
       <Popular
         onSelectDestination={handleSetDestination}
       />

@@ -28,7 +28,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
   }, [from, destination])
 
   return (
-    <div className="bg-[#EDCEB2] p-5 rounded-2xl shadow m-6">
+    <div className="bg-[#EDCEB2] p-5 rounded-2xl shadow m-6 z-50 relative">
       <div className="space-y-4">
         {/* FROM */}
         <div className="relative flex flex-row h-16 rounded-xl bg-white items-center">

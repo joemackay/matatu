@@ -8,9 +8,6 @@ import { useSearchSelectionStore } from "@/store/search.store"
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-type PopularProps = {
-  onSelectDestination: (destination: string) => void
-}
 const popular_links = [
   { name: "All", id: "all" },
   { name: "Malls", id: "malls" },
@@ -18,7 +15,7 @@ const popular_links = [
   { name: "Hospitals", id: "hospitals" },
   { name: "Clubs", id: "clubs" },
 ]
-export default function Popular({onSelectDestination}: PopularProps) {
+export default function Popular() {
   const router = useRouter();
   const popular = popular_data.popular
   const[popularData, setPopularData] = useState(popular[0].items)
@@ -26,8 +23,8 @@ export default function Popular({onSelectDestination}: PopularProps) {
   const { setStoreToDestination } = useSearchSelectionStore()
 
   const handlePopularDestinationSelected =(destination: string)=> {
-    onSelectDestination(destination)
     setStoreToDestination(destination)
+    router.back()
   }
 
   const handleSelectPopularCategory = (id: string) => {
