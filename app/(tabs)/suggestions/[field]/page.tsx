@@ -1,14 +1,30 @@
 "use client"
 import { useState } from "react";
-import { ArrowRightFromLine, ChevronLeft, CirclePlus, CircleX, Goal, LandPlot } from "lucide-react";
+import { ArrowRightFromLine, ChevronLeft, ChevronRight, CirclePlus, CircleX, MapPin } from "lucide-react";
 import destinationsData from '@/mock/destinations.json'
 import PopularItem from "@/app/ui/home/popular-item"
 import { useSearchSelectionStore } from "@/store/search.store"
-import router from "next/router";
 import { useParams, useRouter } from "next/navigation";
 
-type FormSuggestionsProps = {
-  open: boolean;
+type MapOptionItemProps = {
+  onClick: () => void;
+}
+function MapOptionItem({ onClick }: MapOptionItemProps) {
+  return (
+    <div className="flex flex-row justify-between items-center rounded-xl bg-white p-2 mb-3" onClick={()=>onClick()}>
+      <div className='w-1/6'>
+        <div className='flex items-center w-10 h-10 justify-center rounded-full bg-[#EDCEB2]'>
+          <MapPin size={18} className='text-black' />
+        </div>
+      </div>
+      <div className='w-4/6 text-[#59302C]'>
+        <div className=''>Choose on map</div>
+      </div>
+      <div className='w-1/6 flex justify-end'>
+        <ChevronRight className='text-black'  />
+      </div>
+    </div>
+  )
 }
 export default function FormSuggestionsPage({}) {
   const { field: fieldToEdit } = useParams<{ field: string }>();
@@ -28,7 +44,10 @@ export default function FormSuggestionsPage({}) {
     destinations.filter((s) =>
       s.name.toLowerCase().includes(input.toLowerCase())
     )
-  // bg-[#FCE8CF]
+  
+  const handleOpenOnMap = () => {
+    router.push(`/map/`);
+  }
   return (
     <div>
       <div className="">
@@ -116,6 +135,9 @@ export default function FormSuggestionsPage({}) {
         <div className="results-container space-y-4 m-6">
         {activeField === "from" && fromDestination && (
           <div className="z-10 mt-1 w-full max-h-96 overflow-y-auto">
+            <MapOptionItem
+              onClick={handleOpenOnMap}
+            />
             {filteredSuggestions(fromDestination).map((s, idx) => (
               <PopularItem
                 key={idx} 
@@ -134,17 +156,10 @@ export default function FormSuggestionsPage({}) {
         )}
         {activeField === "to" && toDestination && (
           <div className="z-10 mt-1 w-full max-h-96 overflow-y-auto">
+            <MapOptionItem
+              onClick={handleOpenOnMap}
+            />
             {filteredSuggestions(toDestination).map((s, idx) => (
-              // <div
-              //   key={idx}
-              //   onClick={() => {
-              //     setToDestination(s.name)
-              //     setActiveField(null)
-              //   }}
-              //   className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-              // >
-              //   {s.name}
-              // </div>
               <PopularItem
                 key={idx} 
                 title={s.name} 

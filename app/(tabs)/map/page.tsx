@@ -43,7 +43,7 @@ export default function Map() {
       </div>
       <div className="flex justify-center mt-10">
         <div className="w-96 h-96 flex justify-center rounded-xl text-white items-center bg-[#BF4209]">
-          This is the Map
+          This Map will be added when I get the job
         </div>
       </div>
     </div>
