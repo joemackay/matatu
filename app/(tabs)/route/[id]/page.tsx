@@ -1,7 +1,7 @@
 "use client";
 
 import routes_mock_data from '@/mock/routes_info.json';
-import { BusFront, ChevronLeft, CircleDot, Clock4, Goal, LandPlot } from 'lucide-react';
+import { BusFront, ChevronLeft, CircleDot, Clock4, Goal, LandPlot, MapPinOff } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from "next/navigation";
 import { useSearchSelectionStore } from "@/store/search.store"
@@ -18,7 +18,33 @@ export default function RouteDetails() {
   const routeInfo = routes_list.find((item) => item.id === parseInt(id));
 
   if (!routeInfo) {
-    return <div className="p-6 text-red-500">Route not found</div>;
+    return ( //
+      <div>
+        <div className=" flex flex-col items-center mt-20">
+          <div className='w-[20%]'><MapPinOff height={80} width={80} className='text-[#BF4209]' /></div>
+          <div className='p-6 text-[#BF4209] flex flex-row justify-center'>
+            <div className='w-[60%] text-center'>
+              <div className='text-xl font-bold mb-2'>Route Not Available</div>
+              <span>The Route requested is not Available at this time</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className=" flex flex-col items-center">
+          <button
+              className="w-40 h-14 bg-[#59302C] text-white py-2 rounded-xl hover:bg-[#7f4540] text-lg font-bold"
+              onClick={() => router.back()}
+            >
+              <div className='flex flex-row justify-evenly items-center gap-3'>
+                <div className="flex justify-center items-center h-10 w-10 rounded-full bg-white" onClick={() => router.back()}>
+                  <ChevronLeft className="h-6 w-6 text-[#CC703D]" />
+                </div>
+                <div className='text-lg text-white'>Go back</div>
+              </div>
+            </button>
+        </div>
+      </div>
+    )
   }
 
   return (

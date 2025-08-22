@@ -6,23 +6,38 @@ import { ChevronLeft, Link as LinkIcon, BusFront, LandPlot, Goal } from "lucide-
 import SearchListItem from "@/app/ui/search/search-list-item"
 import { useRouter } from "next/navigation";
 import { useSearchSelectionStore } from "@/store/search.store"
-
-const mockResults = [
-  { id: 1, route: "CBD → Westlands", fare: "Ksh 50", time: "20 mins" },
-  { id: 2, route: "CBD → Rongai", fare: "Ksh 80", time: "45 mins" },
-  { id: 3, route: "CBD → Thika", fare: "Ksh 150", time: "1h 20m" },
-]
+import { useEffect, useState } from "react"
 
 export default function SearchResultsPage() {
+  const [results, setResults] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
   const fromDestination = useSearchSelectionStore((state)=>state.fromDestination)
   const toDestination = useSearchSelectionStore((state)=>state.toDestination)
   const router = useRouter();
-  const results = searchResults.results
+
+  
+  useEffect(() => {
+    // I use this to simulate API call delay
+    const timer = setTimeout(() => {
+      setResults(searchResults.results) // load mock results
+      setLoading(false) // stop loader
+    }, 3000) // 3 seconds
+
+    return () => clearTimeout(timer)
+  }, [])
+  // const results = searchResults.results
 
   const handleSaccoSelected = (id: number) => {
     console.log('id', id)
     router.push(`/route/${id}`);
   }
+
+  // if(loading) (
+  //   <div>
+  //     {/* Show loader/skeletons */}
+  //     <p className="text-gray-500">Loading results...</p>
+  //   </div>
+  // ) 
   return (
     <div>
 
