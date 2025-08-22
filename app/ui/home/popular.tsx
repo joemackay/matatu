@@ -3,6 +3,7 @@ import PopularItem from "./popular-item";
 import popular_data from '../../../mock/destinations.json'
 import { useState } from "react";
 import { cn } from "@/lib/utils" // helper for conditional classes
+import { useSearchSelectionStore } from "@/store/search.store"
 
 type PopularProps = {
   onSelectDestination: (destination: string) => void
@@ -18,8 +19,11 @@ export default function Popular({onSelectDestination}: PopularProps) {
   const popular = popular_data.popular
   const[popularData, setPopularData] = useState(popular[0].items)
   const[selectedId, setSelectedId] = useState('')
+  const { setStoreToDestination } = useSearchSelectionStore()
+
   const handlePopularDestinationSelected =(destination: string)=> {
     onSelectDestination(destination)
+    setStoreToDestination(destination)
   }
 
   const handleSelectPopularCategory = (id: string) => {

@@ -31,20 +31,20 @@ export default function FormSuggestionsPage({}) {
   // bg-[#FCE8CF]
   return (
     <div>
-      <div className="space-y-2 p-6">
-        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow mb-4">
+      <div className="">
         <div className="bg-[#CC703D] p-6">
-        <div className="flex justify-between items-center my-6">
-          <div className="w-1/2">
-            <div className="flex justify-center items-center h-10 w-10 rounded-full bg-white" onClick={() => router.back()}>
-              <ChevronLeft className="h-6 w-6 text-[#CC703D]" />
+          <div className="flex justify-between items-center my-6">
+            <div className="w-1/2">
+              <div className="flex justify-center items-center h-10 w-10 rounded-full bg-white" onClick={() => router.back()}>
+                <ChevronLeft className="h-6 w-6 text-[#CC703D]" />
+              </div>
+            </div>
+            <div className="w-1/2 flex justify-end">
+              <h1 className="text-xl font-semibold">Available Routes</h1>
             </div>
           </div>
-          <div className="w-1/2 flex justify-end">
-            <h1 className="text-xl font-semibold">Available Routes</h1>
-          </div>
         </div>
-      </div>
+        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow m-6 mb-4">
           <form className="space-y-6">
             {/* FROM */}
             {fieldToEdit==="from" &&
@@ -113,9 +113,9 @@ export default function FormSuggestionsPage({}) {
           </form>
         </div>
 
-        <div className="results-container space-y-4">
+        <div className="results-container space-y-4 m-6">
         {activeField === "from" && fromDestination && (
-          <div className="top-15 z-10 mt-1 w-full  max-h-40 overflow-y-auto">
+          <div className="z-10 mt-1 w-full max-h-96 overflow-y-auto">
             {filteredSuggestions(fromDestination).map((s, idx) => (
               <PopularItem
                 key={idx} 
@@ -133,7 +133,7 @@ export default function FormSuggestionsPage({}) {
           </div>
         )}
         {activeField === "to" && toDestination && (
-          <div className="z-10 mt-1 w-full bg-white border rounded-xl shadow max-h-40 overflow-y-auto">
+          <div className="z-10 mt-1 w-full max-h-96 overflow-y-auto">
             {filteredSuggestions(toDestination).map((s, idx) => (
               // <div
               //   key={idx}

@@ -16,7 +16,7 @@ export default function Page() {
   const toDestination = useSearchSelectionStore((state)=>state.toDestination)
 
   const router = useRouter();
-
+  console.log('destination', destination)
   const handleSetDestination =(destination:string) => {
     setDestination(destination)
     setOpenSearchFormBottomSheet(true)

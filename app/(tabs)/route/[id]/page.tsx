@@ -4,10 +4,13 @@ import routes_mock_data from '@/mock/routes_info.json';
 import { BusFront, ChevronLeft, CircleDot, Clock4, Goal, LandPlot } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from "next/navigation";
+import { useSearchSelectionStore } from "@/store/search.store"
 
 export default function RouteDetails() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
+  const fromDestination = useSearchSelectionStore((state)=>state.fromDestination)
+  const toDestination = useSearchSelectionStore((state)=>state.toDestination)
 
   const { routes_list } = routes_mock_data
 
@@ -34,7 +37,7 @@ export default function RouteDetails() {
         <div className="space-y-3">
           <div className="flex flex-row">
             <div className="w-1/3 flex flex-row justify-between items-center">
-              <div className="text-xl font-bold">Kencom</div>
+              <div className="text-md font-bold">{fromDestination}</div>
               <div><Goal /></div>
             </div>
             <div className="w-1/3 px-2 flex justify-center items-center">
@@ -46,7 +49,7 @@ export default function RouteDetails() {
             </div>
             <div className="w-1/3 flex flex-row justify-between items-center">
               <div><LandPlot /></div>
-              <div className="text-xl font-bold">Umoja 1</div>
+              <div className="text-md font-bold ps-4">{toDestination}</div>
             </div>
           </div>
         </div>
@@ -87,7 +90,7 @@ export default function RouteDetails() {
           ))}
           <div className='my-2 flex justify-end'>
             <Link
-              href="/all"
+              href="/map"
               className="px-3 py-0 font-semibold text-[#BF4209]"
             >
               <span>View on map </span>

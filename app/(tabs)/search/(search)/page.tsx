@@ -5,6 +5,7 @@ import searchResults from "@/mock/search_results.json"
 import { ChevronLeft, Link as LinkIcon, BusFront, LandPlot, Goal } from "lucide-react"
 import SearchListItem from "@/app/ui/search/search-list-item"
 import { useRouter } from "next/navigation";
+import { useSearchSelectionStore } from "@/store/search.store"
 
 const mockResults = [
   { id: 1, route: "CBD → Westlands", fare: "Ksh 50", time: "20 mins" },
@@ -13,6 +14,8 @@ const mockResults = [
 ]
 
 export default function SearchResultsPage() {
+  const fromDestination = useSearchSelectionStore((state)=>state.fromDestination)
+  const toDestination = useSearchSelectionStore((state)=>state.toDestination)
   const router = useRouter();
   const results = searchResults.results
 
@@ -37,7 +40,7 @@ export default function SearchResultsPage() {
         </div>
         <div className="flex flex-row">
           <div className="w-1/3 flex flex-row justify-between items-center">
-            <div className="text-xl font-bold">Kencom</div>
+            <div className="text-md font-bold">{fromDestination}</div>
             <div><Goal /></div>
           </div>
           <div className="w-1/3 px-2 flex justify-center items-center">
@@ -49,7 +52,7 @@ export default function SearchResultsPage() {
           </div>
           <div className="w-1/3 flex flex-row justify-between items-center">
             <div><LandPlot /></div>
-            <div className="text-xl font-bold">Umoja 1</div>
+            <div className="text-md font-bold ps-4">{toDestination}</div>
           </div>
         </div>
       </div>

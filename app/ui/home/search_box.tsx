@@ -44,10 +44,10 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
   }, [from, destination])
 
   return (
-    <div className="bg-[#EDCEB2] space-y-4 p-6 rounded-2xl shadow">
-      <div className="">
+    <div className="bg-[#EDCEB2] p-5 rounded-2xl shadow m-6">
+      <div className="space-y-4">
         {/* FROM */}
-        <div className="relative flex flex-row h-16 mb-4 rounded-xl bg-white items-center">
+        <div className="relative flex flex-row h-16 rounded-xl bg-white items-center">
           <div className="w-1/6 flex justify-center">
             <div className="h-10 w-10 flex justify-center items-center rounded-full bg-[#FCE8CF]">
               <ArrowRightFromLine height={20} width={20} className="text-[#BF4209]" />
@@ -89,7 +89,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
         </div>
 
         {/* TO */}
-        <div className="relative flex flex-row h-16 mb-4 rounded-xl bg-white items-center">
+        <div className="relative flex flex-row h-16 rounded-xl bg-white items-center">
          <div className="w-1/6 flex justify-center">
             <div className="h-10 w-10 flex justify-center items-center rounded-full bg-[#FCE8CF]">
               <ArrowRightFromLine height={20} width={20} className="text-[#BF4209]" />
