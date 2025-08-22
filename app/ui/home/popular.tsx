@@ -49,7 +49,7 @@ export default function Popular({onSelectDestination}: PopularProps) {
     }
   }
   return (
-    <div className="mt-6 p-6">
+    <div className="mt-0 p-6 pt-0">
       <div className="flex flex-row justify-between items-center mb-4 text-lg">
         <span className="text-[#59302C] font-bold">Popular Places</span>
         <Link

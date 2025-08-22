@@ -50,9 +50,11 @@ export default function FormSuggestionsPage({}) {
   }
   return (
     <div>
-      <div className="">
-        <div className="bg-[#CC703D] p-6">
-          <div className="flex justify-between items-center my-6">
+      <div className="relative">
+        <div className="bg-[#CC703D] absolute top-0 left-0 right-0 h-44 w-full">
+        </div>
+        <div className="p-6 relative z-50">
+          <div className="flex justify-between items-center my-4">
             <div className="w-1/2">
               <div className="flex justify-center items-center h-10 w-10 rounded-full bg-white" onClick={() => router.back()}>
                 <ChevronLeft className="h-6 w-6 text-[#CC703D]" />
@@ -63,7 +65,7 @@ export default function FormSuggestionsPage({}) {
             </div>
           </div>
         </div>
-        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow m-6 mb-4">
+        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow m-6 mt-0 mb-4 relative z-50">
           <form className="space-y-6">
             {/* FROM */}
             {fieldToEdit==="from" &&
