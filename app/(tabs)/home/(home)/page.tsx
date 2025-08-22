@@ -7,11 +7,14 @@ import Welcome from "@/app/ui/home/welcome";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchSelectionStore  } from "@/store/search.store";
+import ConfirmAlert from "@/app/ui/alert";
 
 
 export default function Page() {
   const[destination, setDestination] = useState('')
   const[openSearchFormBottomSheet, setOpenSearchFormBottomSheet] = useState(false)
+  const[showRouteValidationAlert, setShowRouteValidationAlert] = useState(false)
+
   const fromDestination = useSearchSelectionStore((state)=>state.fromDestination)
   const toDestination = useSearchSelectionStore((state)=>state.toDestination)
 
@@ -30,7 +33,11 @@ export default function Page() {
 
   const handleSubmitSearch =()=> {
     console.log('handleSubmitSearch')
-    router.push(`/search/`);
+    if(fromDestination === toDestination) {
+      setShowRouteValidationAlert(true)
+    } else {
+      router.push(`/search/`);
+    }
   }
   return (
     <div>
@@ -47,6 +54,16 @@ export default function Page() {
       <Popular
         onSelectDestination={handleSetDestination}
       />
+
+      {/* {showAlert && */}
+        <ConfirmAlert 
+          open={showRouteValidationAlert}
+          setOpen={() => setShowRouteValidationAlert(false)}
+          title={"Select a different route"}
+          message={"Your Start and Stop destinations are the same"}
+          onContinue={()=> null} 
+          onCancel={()=> null} />
+      {/* } */}
 
     </div>
   )

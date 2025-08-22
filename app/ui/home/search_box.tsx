@@ -2,16 +2,6 @@
 
 import { ArrowRightFromLine, CirclePlus } from "lucide-react"
 import { useEffect, useState } from "react"
-const mockSuggestions = [
-  "CBD, Nairobi",
-  "Westlands",
-  "Karen",
-  "Kasarani",
-  "JKIA",
-  "Thika",
-  "Rongai",
-  "Kilimani",
-]
 
 type SearchBoxProps = {
   from: string;
@@ -24,12 +14,6 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
   const [fromDestination, setFromDestination] = useState("")
   const [toDestination, setToDestination] = useState("")
   const [activeField, setActiveField] = useState<"from" | "to" | null>(null)
-
-  // Filtered suggestions
-  const filteredSuggestions = (input: string) =>
-    mockSuggestions.filter((s) =>
-      s.toLowerCase().includes(input.toLowerCase())
-    )
 
   const handleSetFocus =(field: "from" | "to" | null)=> {
     if (field) {
@@ -70,7 +54,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
               <CirclePlus height={20} width={20} className="text-[#BF4209]" />
             </div>
           </div>
-          {activeField === "from" && fromDestination && (
+          {/* {activeField === "from" && fromDestination && (
             <div className="absolute top-15 z-10 mt-1 w-full  max-h-40 overflow-y-auto">
               {filteredSuggestions(fromDestination).map((s, idx) => (
                 <div
@@ -85,7 +69,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
                 </div>
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* TO */}
@@ -112,7 +96,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
               <CirclePlus height={20} width={20} className="text-[#BF4209]" />
             </div>
           </div>
-          {activeField === "to" && toDestination && (
+          {/* {activeField === "to" && toDestination && (
             <ul className="absolute z-10 mt-1 w-full bg-white border rounded-xl shadow max-h-40 overflow-y-auto">
               {filteredSuggestions(toDestination).map((s, idx) => (
                 <li
@@ -127,7 +111,7 @@ export default function SearchBox({from, destination, onSearchFormFocused, onSub
                 </li>
               ))}
             </ul>
-          )}
+          )} */}
         </div>
 
         <button
