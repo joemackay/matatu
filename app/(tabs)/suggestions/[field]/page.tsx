@@ -61,7 +61,7 @@ export default function FormSuggestionsPage({}) {
               </div>
             </div>
             <div className="w-1/2 flex justify-end">
-              <h1 className="text-xl font-semibold">Available Routes</h1>
+              <h1 className="text-xl font-semibold">Enter your location</h1>
             </div>
           </div>
         </div>
