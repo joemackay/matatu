@@ -21,7 +21,7 @@ export default function Popular({onSelectDestination}: PopularProps) {
   // const popular = popular_data.popular
   const[popularData, setPopularData] = useState<PopularType[]>([])
   const [loading, setLoading] = useState(true)
-  const[selectedId, setSelectedId] = useState('')
+  const[selectedId, setSelectedId] = useState('malls')
   const { setStoreToDestination } = useSearchSelectionStore()
 
   useEffect(() => {

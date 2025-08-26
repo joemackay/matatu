@@ -65,7 +65,7 @@ export default function FormSuggestionsPage({}) {
             </div>
           </div>
         </div>
-        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow m-6 mt-0 mb-4 relative z-50">
+        <div className="form-containter bg-[#EDCEB2] p-6 rounded-2xl shadow-xl m-6 mt-0 mb-4 relative z-50">
           <form className="space-y-6">
             {/* FROM */}
             {fieldToEdit==="from" &&
