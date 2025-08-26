@@ -1,6 +1,6 @@
 import { SearchResult } from "@/types/SearchResult";
 import { BusFront, LinkIcon, Clock4, MoveRight, CircleDot, CircleCheckBig, MapPin, HandCoins, Link, Watch } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type SearchResultProps = {
   result: SearchResult;
@@ -31,12 +31,12 @@ export default function SearchListItem({result, onSaccoSelected}: SearchResultPr
           <div className="flex flex-row mb-2">
             <div className="w-[10%]"><Clock4 height={20} width={20} className="text-[#BF4209]" /></div>
             <div className="w-[30%]"><span className="text-[#59302C]">Travel time</span></div>
-            <div className="w-[60%] flex justify-end"><span className="text-[#59302C] font-semibold">10:00AM - 10:45AM | 45min</span></div>
+            <div className="w-[60%] flex justify-end"><span className="text-[#59302C] font-semibold">{result.startTime} - {result.endTime}| {result.travel_duration}</span></div>
           </div>
           <div className="flex flex-row mb-2">
             <div className="w-[10%]"><HandCoins height={20} width={20} className="text-[#BF4209]" /></div>
             <div className="w-[30%]"><span className="text-[#59302C]">Estimated fare</span></div>
-            <div className="w-[60%] flex justify-end"><span className="text-[#59302C] font-semibold">60 - 100 KES</span></div>
+            <div className="w-[60%] flex justify-end"><span className="text-[#59302C] font-semibold">{result.fare} - 100 KES</span></div>
           </div>
           <div className="flex flex-row mb-2">
             <div className="w-[10%]"><Watch height={20} width={20} className="text-[#BF4209]" /></div>
@@ -72,17 +72,17 @@ export default function SearchListItem({result, onSaccoSelected}: SearchResultPr
 
       <div className="flex flex-row items-center mb-2">
         <div className="w-[10%]">
-          <CircleDot height={20} width={20} className="text-[#BF4209]" />
+          <Clock4 height={20} width={20} className="text-[#BF4209]" />
         </div>
         <div className="w-[60%]">
           <span className="text-[#59302C] font-light">Travel time</span>
         </div>
         <div className="w-[30%] flex justify-end">
-          <span className="text-[#59302C] font-semibold">{result.travel_time}</span>
+          <span className="text-[#59302C] font-semibold">{result.travel_duration}</span>
         </div>
       </div>
       <div className="flex flex-row justify-start items-center gap-2">
-        <Clock4 height={20} width={20} className="text-[#BF4209]" />
+        <CircleDot height={20} width={20} className="text-[#BF4209]" />
         <MoveRight height={20} width={20} className="text-[#BF4209]" />
         <div className="flex flex-row">
           <BusFront height={20} width={20} className="text-[#BF4209]" />

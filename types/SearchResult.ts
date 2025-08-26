@@ -3,9 +3,11 @@ export interface SearchResult {
   sacco_name: string;
   route_number: string;
   pickup_location: string;
-  travel_time: string;
+  travel_duration: string;
+  startTime: string;
+  endTime: string;
   fare: number,
   pickup_start_time: string;
   pickup_end_time: string;
-  connections: number
+  connections: number;
 } 

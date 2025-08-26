@@ -16,11 +16,40 @@ export default function SearchResultsPage() {
   const toDestination = useSearchSelectionStore((state)=>state.toDestination)
   const router = useRouter();
 
-  
+  const travelTime = (duration: string) => {
+    const durationParts = duration.split(' ');
+    const durationValue = parseInt(durationParts[0], 10);
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + durationValue);
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12 || 12; // convert 0 -> 12 for 12hr format
+
+    return `${hours}:${minutes}${ampm}`;
+  }
+
+  const timeNow = () => {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0'); 
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; // convert 0 -> 12 for 12hr format
+    console.log('`${hours}:${minutes}${ampm}`', `${hours}:${minutes}${ampm}`)
+    return `${hours}:${minutes}${ampm}`;
+  }
+
   useEffect(() => {
     // I use this to simulate API call delay
+    const myResults = searchResults.results.map((result) => ({
+      ...result,
+      startTime: timeNow(), 
+      endTime: travelTime(result.travel_duration)
+    }))
     const timer = setTimeout(() => {
-      setResults(searchResults.results) // load mock results
+      setResults(myResults) // load mock results
       setLoading(false)
     }, 1000) // 3 seconds
 
